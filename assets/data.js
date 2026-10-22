@@ -15,7 +15,7 @@ window.AKD = {
   // Board committees, shown on board.html in this order. Photos live in assets/board/;
   // a committee with img: null shows a "Photo coming soon" print until its photo is added.
   crew: [
-    { committee: "Directors", img: null },
+    { committee: "Directors", img: "directors.jpg" },
     { committee: "Head Liaison", img: "head-liaison.jpg" },
     { committee: "Finance", img: "finance.jpg" },
     { committee: "Hospitality", img: "hospitality.jpg" },
