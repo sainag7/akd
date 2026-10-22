@@ -1,0 +1,166 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaj Ka Dhamaka | Official Legends Partner Competition</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="home">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="akd-logo.png" alt="AKD Logo">
+        <span class="name">AAJ KA DHAMAKA</span>
+      </a>
+  
+      <!-- Desktop links -->
+      <div class="nav-links" id="desktopNav">
+        <a href="index.html">Home</a>
+        <a href="board.html">Board</a>
+        <a href="teams.html">Teams</a>
+        <a href="swa.html">SWA Info</a>
+        <a href="partners.html">Partners</a>
+        <a href="visitor.html">Visitor Info</a>
+      </div>
+  
+      <!-- Mobile hamburger -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  
+    <!-- Mobile drawer + backdrop -->
+    <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+  
+    <aside class="nav-drawer" id="mobileNav" hidden>
+      <div class="nav-drawer-top">
+        <div class="nav-drawer-title">MENU</div>
+        <button class="nav-drawer-close" id="navClose" aria-label="Close menu">×</button>
+      </div>
+  
+      <div class="nav-drawer-links">
+        <a href="index.html">Home</a>
+        <a href="board.html">Board</a>
+        <a href="teams.html">Teams</a>
+        <a href="swa.html">SWA Info</a>
+        <a href="partners.html">Partners</a>
+        <a href="visitor.html">Visitor Info</a>
+      </div>
+    </aside>
+  </header>
+
+
+
+
+
+
+  <section class="hero hero--center">
+    <canvas id="stars-canvas" class="stars-canvas"></canvas>
+
+    <div class="planet-bg">
+      <div class="planet"></div>
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="ring r3"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <h1>AAJ KA DHAMAKA</h1>
+      <p class="hero-sub">Official Legends Partner Competition</p>
+      <div class="btn-row">
+        <a href="#details" class="btn btn-primary">Event Details</a>
+        <a href="#partners" class="btn btn-ghost">Partners</a>
+      </div>
+    </div>
+  </section>
+
+
+   <!-- Tip-Off Countdown Section -->
+  <section class="countdown-section">
+    <div class="container">
+      <h2 class="countdown-title">Time Until Tip-Off</h2>
+
+      <div class="flip-countdown">
+        <div class="flip-unit" data-unit="days">
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front">000</div>
+              <div class="flip-back">000</div>
+            </div>
+          </div>
+          <span class="flip-label">DAYS</span>
+        </div>
+
+        <div class="flip-unit" data-unit="hours">
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front">00</div>
+              <div class="flip-back">00</div>
+            </div>
+          </div>
+          <span class="flip-label">HOURS</span>
+        </div>
+
+        <div class="flip-unit" data-unit="minutes">
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front">00</div>
+              <div class="flip-back">00</div>
+            </div>
+          </div>
+          <span class="flip-label">MINUTES</span>
+        </div>
+
+        <div class="flip-unit" data-unit="seconds">
+          <div class="flip-card">
+            <div class="flip-inner">
+              <div class="flip-front">00</div>
+              <div class="flip-back">00</div>
+            </div>
+          </div>
+          <span class="flip-label">SECONDS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  
+  <section id="details">
+    <div class="container panel">
+      <h2>Event Details</h2>
+      <div class="details-simple">
+        <div>
+          <div class="info-label">Date</div>
+          <p class="muted">Saturday, March 7, 2026</p>
+        </div>
+        <div>
+          <div class="info-label">Time</div>
+          <p class="muted">Doors 5:30 PM • Show 6:30–9:30 PM</p>
+        </div>
+        <div>
+          <div class="info-label">Location</div>
+          <p class="muted">Memorial Hall, UNC-Chapel Hill</p>
+        </div>
+      </div>
+      <p class="muted bullet-ball">
+        Bring your jam and be ready to Space Jam — high-energy sets, a hype crowd, and a night you’ll remember.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2026 Aaj Ka Dhamaka. All rights reserved.</div>
+      <div class="nav-links">
+        <a href="#details">Event Details</a>
+        <a href="#partners">Partners</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
