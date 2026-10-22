@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKD | Board</title>
+  <!-- Base styles -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Board-specific overrides -->
+  <link rel="stylesheet" href="board.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="akd-logo.png" alt="AKD Logo">
+        <span class="name">AAJ KA DHAMAKA</span>
+      </a>
+
+      <!-- Desktop links -->
+      <div class="nav-links" id="desktopNav">
+        <a href="index.html">Home</a>
+        <a href="board.html">Board</a>
+        <a href="teams.html">Teams</a>
+        <a href="swa.html">SWA Info</a>
+        <a href="partners.html">Partners</a>
+        <a href="visitor.html">Visitor Info</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile drawer + backdrop -->
+    <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+
+    <aside class="nav-drawer" id="mobileNav" hidden>
+      <div class="nav-drawer-top">
+        <div class="nav-drawer-title">MENU</div>
+        <button class="nav-drawer-close" id="navClose" aria-label="Close menu">×</button>
+      </div>
+
+      <div class="nav-drawer-links">
+        <a href="index.html">Home</a>
+        <a href="board.html">Board</a>
+        <a href="teams.html">Teams</a>
+        <a href="swa.html">Teams &amp; SWA Info</a>
+        <a href="partners.html">Partners</a>
+        <a href="visitor.html">Visitor Info</a>
+      </div>
+    </aside>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Board</h1>
+        <p>Meet the team behind AKD weekend.</p>
+      </div>
+    </section>
+
+    <section class="container board-wrap">
+
+      <!-- DIRECTORS (ONE LARGE GROUP PHOTO) -->
+      <div class="board-section panel">
+        <div class="board-section-head">
+          <h2>Directors</h2>
+        </div>
+
+        <div class="board-grid board-grid--directors">
+
+          <article class="board-card board-card--directors">
+            <div class="board-photo">
+              <img src="assets/img/board/directors-1.png" alt="Directors group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Directors</div>
+              <div class="board-role">
+                Sara Jadhav • Amber Kakkar • Spriha Manjigani
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- COMMITTEES (ONE GRID, SAME SIZE CARDS) -->
+      <div class="board-section panel">
+        <div class="board-section-head">
+          <h2>Committees</h2>
+        </div>
+
+        <div class="board-grid board-grid--committees">
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/social.png" alt="Social committee group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Social</div>
+              <div class="board-role">Jayani Pitta • Celeste Samuel</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/head-liaison.png" alt="Head Liaison group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Head Liaison</div>
+              <div class="board-role">Moksha Nemalipuri • Esha Singaraju</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/marketing-design.png" alt="Marketing and Design group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Marketing &amp; Design</div>
+              <div class="board-role">Shreeya Moore • Aditi Satish • Harshi Gadasu</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/logistics.png" alt="Logistics group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Logistics</div>
+              <div class="board-role">Aditi Bharatkumar • Priya Patel • Ria Shah • Madhu Chinta</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/tech.png" alt="Tech group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Tech</div>
+              <div class="board-role">Diya Bhatt • Bhargav Madadi</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/swa.png" alt="Safety and Wellness group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Safety &amp; Wellness</div>
+              <div class="board-role">Ruhi Roy • Veda Muppala</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/registration.png" alt="Registration group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Registration</div>
+              <div class="board-role">Nidhi Padala • Meeta Sindagi</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/hospitality.png" alt="Hospitality group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Hospitality</div>
+              <div class="board-role">Sandhya Sathis • Suhani Agarwal • Aarav Gupta • Medha Nagaluri</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/judging.png" alt="Judging group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Judging</div>
+              <div class="board-role">Devin Patel</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/finance.png" alt="Finance group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Finance</div>
+              <div class="board-role">Sonia Shah</div>
+            </div>
+          </article>
+
+          <article class="board-card board-card--committee">
+            <div class="board-photo">
+              <img src="assets/img/board/partnerships.png" alt="Partnerships group photo">
+            </div>
+            <div class="board-meta">
+              <div class="board-name">Partnerships</div>
+              <div class="board-role">Rishika Jalagam</div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2026 Aaj Ka Dhamaka. All rights reserved.</div>
+      <div class="nav-links">
+        <a href="visitor.html">Visitor Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Be sure to include your existing JavaScript for navigation toggles -->
+  <script src="script.js" defer></script>
+</body>
+</html>
