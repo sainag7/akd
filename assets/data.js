@@ -12,20 +12,20 @@ window.AKD = {
     regular: { label: "10.30.26", at: "2026-10-30T23:59:00-04:00" },
     latest: { label: "11.5.26", at: "2026-11-05T23:59:00-05:00" }
   },
-  // Board committees, shown on board.html
+  // Board committees, shown on board.html in this order. Photos live in assets/board/;
+  // a committee with img: null shows a "Photo coming soon" print until its photo is added.
   crew: [
-    { committee: "Directors", img: "directors.jpg" },
-    { committee: "Liaisons", img: "liaisons.jpg" },
-    { committee: "Logistics", img: "logistics.jpg" },
+    { committee: "Directors", img: null },
+    { committee: "Head Liaison", img: "head-liaison.jpg" },
+    { committee: "Finance", img: "finance.jpg" },
     { committee: "Hospitality", img: "hospitality.jpg" },
     { committee: "Judging", img: "judging.jpg" },
-    { committee: "Safety & Wellness", img: "swa.jpg" },
-    { committee: "Registration", img: "registration.jpg" },
+    { committee: "Logistics", img: "logistics.jpg" },
     { committee: "Marketing & Design", img: "marketing-design.jpg" },
-    { committee: "Tech", img: "tech.jpg" },
-    { committee: "Finance", img: "finance.jpg" },
-    { committee: "Partnerships", img: "partnerships.jpg" },
-    { committee: "Social", img: "social.jpg" }
+    { committee: "Registration", img: "registration.jpg" },
+    { committee: "Safety & Wellness", img: "safety-wellness.jpg" },
+    { committee: "Social", img: "social.jpg" },
+    { committee: "Tech", img: "tech.jpg" }
   ],
   // Food spots, shown on visit.html
   food: [
