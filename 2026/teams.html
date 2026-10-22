@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKD | Teams</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="teams-liaisons.css?v=1" />
+</head>
+
+<body class="home">
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">
+        <img src="akd-logo.png" alt="AKD Logo" />
+        <span class="name">AAJ KA DHAMAKA</span>
+      </a>
+
+      <div class="nav-links" id="desktopNav">
+        <a href="index.html">Home</a>
+        <a href="board.html">Board</a>
+        <a href="teams.html">Teams</a>
+        <a href="swa.html">SWA Info</a>
+        <a href="partners.html">Partners</a>
+        <a href="visitor.html">Visitor Info</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+
+    <aside class="nav-drawer" id="mobileNav" hidden>
+      <div class="nav-drawer-top">
+        <div class="nav-drawer-title">MENU</div>
+        <button class="nav-drawer-close" id="navClose" aria-label="Close menu">×</button>
+      </div>
+
+      <div class="nav-drawer-links">
+        <a href="index.html">Home</a>
+        <a href="board.html">Board</a>
+        <a href="teams.html">Teams</a>
+        <a href="swa.html">SWA Info</a>
+        <a href="partners.html">Partners</a>
+        <a href="visitor.html">Visitor Info</a>
+      </div>
+    </aside>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Teams</h1>
+        <p>Attending teams for AKD weekend.</p>
+
+        <div class="teams-hero-actions">
+          <a class="btn btn-primary" href="swa.html">Safety &amp; Wellness Info</a>
+
+          <a class="btn btn-linktree"
+            href="https://linktr.ee/AKDLiaisons2026"
+            target="_blank"
+            rel="noopener">
+            Liaison Linktree
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="teams-section panel">
+        <div class="teams-section-head">
+          <h2>Fusion</h2>
+          <p class="muted">8 teams</p>
+        </div>
+        <div class="teams-grid" id="fusionGrid"></div>
+      </div>
+
+      <div class="teams-section panel">
+        <div class="teams-section-head">
+          <h2>Bhangra</h2>
+          <p class="muted">5 teams</p>
+        </div>
+        <div class="teams-grid" id="bhangraGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div>© 2026 Aaj Ka Dhamaka. All rights reserved.</div>
+      <div class="nav-links">
+        <a href="visitor.html">Visitor Info</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Liaison Modal -->
+  <div class="liaison-modal-backdrop" id="liaisonModalBackdrop" hidden></div>
+
+  <div class="liaison-modal" id="liaisonModal" role="dialog" aria-modal="true" aria-labelledby="liaisonModalTitle" hidden>
+    <div class="liaison-modal-header">
+      <div>
+        <div class="liaison-modal-kicker">Team Liaisons</div>
+        <h3 class="liaison-modal-title" id="liaisonModalTitle">Team</h3>
+      </div>
+      <button class="liaison-modal-close" id="liaisonModalClose" aria-label="Close">×</button>
+    </div>
+
+    <div class="liaison-modal-body" id="liaisonModalBody"></div>
+  </div>
+
+  <script src="script.js" defer></script>
+  <script src="teams-liaisons.js?v=2" defer></script>
+</body>
+</html>
