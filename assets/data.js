@@ -26,7 +26,7 @@ window.AKD = {
     } },
     { committee: "Judging", img: "judging.jpg", members: ["Rahi Patel"] },
     { committee: "Logistics", img: "logistics.jpg", members: ["Madhu Chinta", "Saanvi Veeramreddy", "Celeste Samuel", "Ruhi Roy"] },
-    { committee: "Marketing & Design", img: "marketing-design.jpg", members: ["Jerin Mathew", "Aditi Satish", "Sravya Chebrolu"] },
+    { committee: "Marketing & Design", img: "marketing-design.jpg", members: ["Jerin Mathew", "Sravya Chebrolu", "Aditi Satish"] },
     { committee: "Registration", img: "registration.jpg", members: ["Veda Muppala", "Manvika Mamidala"] },
     { committee: "Safety & Wellness", img: "safety-wellness.jpg", members: ["Nikita Chincholkar", "Rishima Mathur"] },
     { committee: "Social", img: "social.jpg", members: ["Nandini Guruprasadh", "Tanuj Devulapalli"] },
