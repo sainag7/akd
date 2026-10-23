@@ -16,7 +16,7 @@
 .print { position: relative; margin: 0; padding: 10px 10px 0; background: #F8F1E1; box-shadow: 0 10px 24px rgba(74, 35, 18, .22); transform: rotate(var(--tilt)); transition: transform .3s; }
 .print:hover, .print:focus-within { transform: rotate(0deg) scale(1.03); z-index: 2; }
 .print .ph { aspect-ratio: 4 / 3; overflow: hidden; }
-.print img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.85) contrast(1.05) brightness(.95); transition: filter .4s; }
+.print img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.35) saturate(.9) contrast(1.03); transition: filter .4s; }
 .print:hover img, .print:focus-within img { filter: none; }
 /* Blank print for a committee whose photo isn't in yet */
 .print .soon { display: grid; place-items: center; height: 100%; background: repeating-linear-gradient(-45deg, #EFE3C8 0 10px, #F4EAD3 10px 20px); color: var(--sepia); font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
