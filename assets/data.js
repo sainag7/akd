@@ -14,18 +14,23 @@ window.AKD = {
   },
   // Board committees, shown on board.html in this order. Photos live in assets/board/;
   // a committee with img: null shows a "Photo coming soon" print until its photo is added.
+  // members lists names left to right as they stand in the photo. For a photo with two rows,
+  // use an object of rows instead, e.g. { "Back row": [...], "Front row": [...] }.
   crew: [
-    { committee: "Directors", img: "directors.jpg" },
-    { committee: "Head Liaison", img: "head-liaison.jpg" },
-    { committee: "Finance", img: "finance.jpg" },
-    { committee: "Hospitality", img: "hospitality.jpg" },
-    { committee: "Judging", img: "judging.jpg" },
-    { committee: "Logistics", img: "logistics.jpg" },
-    { committee: "Marketing & Design", img: "marketing-design.jpg" },
-    { committee: "Registration", img: "registration.jpg" },
-    { committee: "Safety & Wellness", img: "safety-wellness.jpg" },
-    { committee: "Social", img: "social.jpg" },
-    { committee: "Tech", img: "tech.jpg" }
+    { committee: "Directors", img: "directors.jpg", members: ["Esha Singaraju", "Devin Patel", "Spriha Manjigani"] },
+    { committee: "Head Liaison", img: "head-liaison.jpg", members: ["Ayanna Sharma", "Moksha Nemalipuri", "Joanna Hu"] },
+    { committee: "Finance", img: "finance.jpg", members: ["Rishika Jalagam", "Krish Shah", "Jayani Pitta"] },
+    { committee: "Hospitality", img: "hospitality.jpg", members: {
+      "Back row": ["Aarav Gupta", "Anya Joshi", "Suhani Agarwal", "Sandhya Sathis"],
+      "Front row": ["Neelasha Panda", "Nishita Kashyap"]
+    } },
+    { committee: "Judging", img: "judging.jpg", members: ["Rahi Patel"] },
+    { committee: "Logistics", img: "logistics.jpg", members: ["Madhu Chinta", "Saanvi Veeramreddy", "Celeste Samuel", "Ruhi Roy"] },
+    { committee: "Marketing & Design", img: "marketing-design.jpg", members: ["Jerin Mathew", "Aditi Satish", "Sravya Chebrolu"] },
+    { committee: "Registration", img: "registration.jpg", members: ["Veda Muppala", "Manvika Mamidala"] },
+    { committee: "Safety & Wellness", img: "safety-wellness.jpg", members: ["Nikita Chincholkar", "Rishima Mathur"] },
+    { committee: "Social", img: "social.jpg", members: ["Nandini Guruprasadh", "Tanuj Devulapalli"] },
+    { committee: "Tech", img: "tech.jpg", members: ["Sai Nagamalla", "Bhargav Madadi"] }
   ],
   // Food spots, shown on visit.html
   food: [

@@ -11,24 +11,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 <style>
-/* Photo album: sepia prints held by black corner mounts, color on hover */
-.album { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 36px; }
-.print { position: relative; margin: 0; padding: 10px 10px 0; background: #F8F1E1; box-shadow: 0 10px 24px rgba(74, 35, 18, .22); transform: rotate(var(--tilt)); transition: transform .3s; }
-.print:hover, .print:focus-within { transform: rotate(0deg) scale(1.03); z-index: 2; }
+/* Photo album: sepia prints held by black corner mounts, color on hover.
+   Tapping a print turns it over to the names written on the back. */
+.album { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px 36px; align-items: start; }
+.flip { position: relative; perspective: 1400px; }
+.flip:hover, .flip:focus-within { z-index: 2; }
+.flip .card { display: grid; transform-style: preserve-3d; transform: rotate(var(--tilt)) scale(1) rotateY(0deg); transition: transform .6s cubic-bezier(.3, .7, .2, 1); }
+.flip:hover .card, .flip:focus-within .card { transform: rotate(0deg) scale(1.03) rotateY(0deg); }
+.flip.is-flipped .card { transform: rotate(var(--tilt)) scale(1) rotateY(180deg); }
+.flip.is-flipped:hover .card, .flip.is-flipped:focus-within .card { transform: rotate(0deg) scale(1.03) rotateY(180deg); }
+.flip .side { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+/* The whole print is one button; the names stay in the page for screen readers */
+.flip-btn { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.flip-btn:focus-visible { outline: 3px solid var(--air-red); outline-offset: 8px; }
+
+/* Front: the photo */
+.print { position: relative; display: flex; flex-direction: column; height: 100%; margin: 0; padding: 10px 10px 0; background: #F8F1E1; box-shadow: 0 10px 24px rgba(74, 35, 18, .22); }
 .print .ph { aspect-ratio: 4 / 3; overflow: hidden; }
 .print img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.35) saturate(.9) contrast(1.03); transition: filter .4s; }
-.print:hover img, .print:focus-within img { filter: none; }
+.flip:hover img, .flip:focus-within img { filter: none; }
 /* Blank print for a committee whose photo isn't in yet */
 .print .soon { display: grid; place-items: center; height: 100%; background: repeating-linear-gradient(-45deg, #EFE3C8 0 10px, #F4EAD3 10px 20px); color: var(--sepia); font-size: 15px; letter-spacing: .12em; text-transform: uppercase; }
-.print figcaption { padding: 10px 2px 14px; text-align: center; font-family: var(--display); text-transform: uppercase; font-size: clamp(16px, 1.5vw, 20px); }
+.print figcaption { padding: 10px 2px 2px; text-align: center; font-family: var(--display); text-transform: uppercase; font-size: clamp(16px, 1.5vw, 20px); }
+.print .hint { margin-top: auto; padding: 0 2px 12px; text-align: center; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--sepia); }
 .print i { position: absolute; width: 30px; height: 30px; background: var(--ink-deep); }
 .print i:nth-of-type(1) { left: -6px; top: -6px; clip-path: polygon(0 0, 100% 0, 0 100%); }
 .print i:nth-of-type(2) { right: -6px; top: -6px; clip-path: polygon(0 0, 100% 0, 100% 100%); }
 .print i:nth-of-type(3) { left: -6px; bottom: -6px; clip-path: polygon(0 0, 100% 100%, 0 100%); }
 .print i:nth-of-type(4) { right: -6px; bottom: -6px; clip-path: polygon(100% 0, 100% 100%, 0 100%); }
+
+/* Back: names typed on ruled paper, left to right as they stand in the photo */
+.back { display: flex; flex-direction: column; padding: 22px 22px 18px; transform: rotateY(180deg); background: #F8F1E1; box-shadow: 0 10px 24px rgba(74, 35, 18, .22); }
+.back h2 { margin: 0 0 4px; font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(18px, 1.7vw, 22px); line-height: 1.2; }
+.back .meta { margin-bottom: 6px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--sepia); }
+/* Ruled lines sit under the names list so every name lands on a line */
+.back .lines { border-top: 1px solid rgba(91, 141, 184, .25); background: repeating-linear-gradient(transparent 0 27px, rgba(91, 141, 184, .25) 27px 28px); }
+.back .row-label { display: block; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--sepia); line-height: 28px; }
+.back ul { list-style: none; margin: 0; padding: 0; }
+.back li { font-size: 16px; line-height: 28px; }
+.back .stamp { align-self: flex-end; margin-top: auto; padding: 4px 10px; border: 2px solid var(--air-red); color: var(--air-red); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; transform: rotate(-6deg); opacity: .8; }
+
 @media (max-width: 900px) { .album { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .album { grid-template-columns: 1fr; gap: 34px; } }
-@media (prefers-reduced-motion: reduce) { .print { transition: none; } }
+@media (max-width: 600px) { .album { grid-template-columns: 1fr; gap: 34px; padding: 0 8px; } }
+@media (prefers-reduced-motion: reduce) { .flip .card, .print img { transition: none; } }
 </style>
 </head>
 <body>
@@ -40,14 +65,13 @@
     <div class="wrap">
       <div class="bar"><span>Aaj Ka Dhamaka 30.0</span><span>Official Legends partner competition</span><span>02.20.2027</span></div>
       <h1 class="cond">Board</h1>
-      <p class="lede">The eleven committees behind AKD 30.0. Hover or tap a print to see it in color.</p>
+      <p class="lede">The eleven committees behind AKD 30.0. Tap a print to turn it over and see who's who.</p>
     </div>
   </section>
 
   <section class="band-light">
     <div class="wrap">
       <div class="album" id="album"></div>
-      <p class="note" style="margin-top:40px">Member names coming soon.</p>
     </div>
   </section>
 </main>
@@ -58,12 +82,41 @@
 <script src="site.js"></script>
 <script>
   const tilts = [-3, 2, -1.5, 3.5, -2.5, 1.5, -3.5, 2.5, -2, 3, -1, 2];
-  document.querySelector("#album").innerHTML = window.AKD.crew.map((c, i) => `
-    <figure class="print" tabindex="0" style="--tilt:${tilts[i % tilts.length]}deg">
-      <i></i><i></i><i></i><i></i>
-      <div class="ph">${c.img ? `<img src="assets/board/${c.img}" alt="The ${c.committee} committee" loading="lazy">` : '<span class="soon">Photo coming soon</span>'}</div>
-      <figcaption>${c.committee}</figcaption>
-    </figure>`).join("");
+  // members is a left-to-right list, or { "Back row": [...], "Front row": [...] } for two rows
+  const names = (members) => {
+    if (!members) return '<ul><li>Names coming soon</li></ul>';
+    const rows = Array.isArray(members) ? { "": members } : members;
+    return Object.entries(rows).map(([label, people]) => {
+      const heading = label || (people.length > 1 ? "Left to right" : "");
+      return `${heading ? `<span class="row-label">${heading}</span>` : ""}<ul>${people.map((n) => `<li>${n}</li>`).join("")}</ul>`;
+    }).join("");
+  };
+  const album = document.querySelector("#album");
+  album.innerHTML = window.AKD.crew.map((c, i) => `
+    <div class="flip" style="--tilt:${tilts[i % tilts.length]}deg">
+      <div class="card">
+        <figure class="side print">
+          <i></i><i></i><i></i><i></i>
+          <div class="ph">${c.img ? `<img src="assets/board/${c.img}" alt="The ${c.committee} committee" loading="lazy">` : '<span class="soon">Photo coming soon</span>'}</div>
+          <figcaption>${c.committee}</figcaption>
+          <span class="hint" aria-hidden="true">Tap to see who's who</span>
+        </figure>
+        <div class="side back">
+          <h2>${c.committee}</h2>
+          <span class="meta">AKD 30.0 board</span>
+          <div class="lines">${names(c.members)}</div>
+          <span class="stamp" aria-hidden="true">Chapel Hill, N.C.</span>
+        </div>
+      </div>
+      <button class="flip-btn" type="button" aria-pressed="false" aria-label="Turn over the ${c.committee} photo"></button>
+    </div>`).join("");
+  album.addEventListener("click", (e) => {
+    const btn = e.target.closest(".flip-btn");
+    if (!btn) return;
+    const on = btn.getAttribute("aria-pressed") !== "true";
+    btn.setAttribute("aria-pressed", on);
+    btn.parentElement.classList.toggle("is-flipped", on);
+  });
 </script>
 </body>
 </html>
