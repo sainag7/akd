@@ -28,10 +28,9 @@
 .band { position: relative; display: block; margin: 14px 0; height: clamp(260px, 52vh, 560px); text-shadow: none; }
 .band .duo { position: absolute; inset: 0; box-shadow: 0 0 0 10px #F8F1E1, 0 18px 40px rgba(74, 35, 18, .3); }
 .band .duo img { object-position: center 44%; }
-/* Team photo: real colors under a warm, printed-paper tint */
-.duo.soft img { filter: sepia(.42) saturate(.82) contrast(1.05) brightness(.97); mix-blend-mode: normal; }
-.duo.soft::before { background: #E6D2A8; opacity: .3; }
-.duo.soft::after { opacity: .16; }
+/* Team photo: the same light sepia as the Board prints, with no paper tint or dot screen */
+.duo.soft img { filter: sepia(.35) saturate(.9) contrast(1.03); mix-blend-mode: normal; }
+.duo.soft::before, .duo.soft::after { display: none; }
 .band .stamp { position: absolute; z-index: 4; right: clamp(8px, 3vw, 40px); top: -40px; width: clamp(96px, 10vw, 130px); aspect-ratio: 5 / 6; transform: rotate(8deg); }
 .stamp .inner { display: grid; grid-template-rows: auto 1fr auto; text-align: center; padding: 8px 6px; border: 2px solid var(--air-red); color: var(--air-red); }
 .stamp .top { font-family: var(--display); font-size: clamp(11px, 1.05vw, 14px); letter-spacing: .04em; }
