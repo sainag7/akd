@@ -5,6 +5,7 @@
   const nav = document.querySelector("header.nav");
   const page = nav.dataset.page;
   const links = [
+    ["home", "index.html", "Home"],
     ["teams", "teams.html", "Teams"],
     ["event", "event.html", "Event"],
     ["board", "board.html", "Board"],
