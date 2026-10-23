@@ -9,7 +9,7 @@
     ["event", "event.html", "Event"],
     ["board", "board.html", "Board"],
     ["visit", "visit.html", "Visitor info"],
-    ["partners", "index.html#partners", "Partners"]
+    ["partners", "partners.html", "Partners"]
   ];
   nav.innerHTML = `
     <div class="wrap">

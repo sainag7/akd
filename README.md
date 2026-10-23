@@ -10,6 +10,7 @@ It's a static site served by GitHub Pages from the `main` branch.
 - `event.html`: event details with a live countdown
 - `board.html`: board committees
 - `visit.html`: visitor info and food spots
+- `partners.html`: partners (coming soon)
 - `site.css` and `site.js`: shared styles, header and footer for every page
 
 ## Updating content
@@ -19,7 +20,6 @@ Board photos go in `assets/board/`, named to match `data.js`.
 
 Still to fill in:
 
-- The OneLegends and Ekta application links (the two "Apply" buttons in `index.html`)
 - Showtime and ticket links once they're set
 - The team lineup in late November (`teams.html` and the Teams section of `index.html`)
 
