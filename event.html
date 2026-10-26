@@ -36,6 +36,35 @@
 .clock i { font-style: normal; font-size: clamp(26px, 2.8vw, 34px); line-height: 1; opacity: .7; }
 .waves { position: absolute; z-index: 0; left: 62%; top: 30%; width: 70%; color: var(--air-red); opacity: .45; }
 
+/* 30th anniversary seal beside the page title */
+.page-head .wrap { position: relative; }
+.seal { position: absolute; right: 3%; top: 64px; width: clamp(92px, 20vw, 260px); color: var(--air-red); opacity: .9; transform: rotate(-12deg); mix-blend-mode: multiply; }
+.seal text { font-family: var(--type); fill: currentColor; }
+.seal .num { font-family: var(--display); }
+
+/* 30 years: a sheet of thirty stamps, one per edition, with this year's in red */
+.thirty-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+.thirty h2 { margin-bottom: 22px; color: var(--paper-3); }
+.thirty p { margin: 0 0 18px; max-width: 46ch; font-size: 18px; }
+.thirty .kicker { margin-bottom: 10px; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: #D8B98C; }
+.thirty .btn { margin-top: 10px; }
+.thirty-grid > * { min-width: 0; }
+.sheet { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; padding: 14px; border: 1.5px dashed rgba(243, 232, 210, .35); }
+.sheet .stamp-frame { aspect-ratio: 5 / 6; padding: 6px; background-size: 10px 10px; background-position: -5px -5px;
+  background-image: radial-gradient(circle at 5px 5px, transparent 2.6px, #F6EFDF 3.1px); }
+.sheet .inner { display: grid; place-items: center; align-content: center; gap: 2px; color: var(--ink); border: 1px solid rgba(74, 35, 18, .25); }
+.sheet b { font-family: var(--display); font-weight: 400; font-size: clamp(13px, 1.5vw, 20px); line-height: 1; }
+.sheet small { font-size: clamp(8px, .8vw, 10px); letter-spacing: .1em; text-transform: uppercase; color: var(--sepia); }
+.sheet .now { transform: rotate(-6deg) scale(1.08); z-index: 1; }
+.sheet .now .inner { background: var(--air-red); border-color: var(--paper-3); color: var(--paper-3); }
+.sheet .now small { color: var(--paper-3); }
+/* Stamps press onto the sheet one by one when it scrolls into view */
+.sheet.ready .stamp-frame { opacity: 0; }
+.sheet.go .stamp-frame { animation: press .35s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 45ms); }
+.sheet.go .now { animation-name: press-now; animation-duration: .5s; }
+@keyframes press { from { opacity: 0; transform: scale(1.5); } to { opacity: 1; transform: none; } }
+@keyframes press-now { from { opacity: 0; transform: rotate(-20deg) scale(2.2); } to { opacity: 1; transform: rotate(-6deg) scale(1.08); } }
+
 .venue { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(30px, 6vw, 90px); align-items: end; }
 .venue .name { margin: 0; font-size: clamp(42px, 5.6vw, 84px); }
 .venue p { margin: 0 0 16px; font-size: 18px; max-width: 46ch; }
@@ -43,12 +72,22 @@
 @media (max-width: 900px) {
   .event-grid { grid-template-columns: 1fr 1fr; }
   .event-grid div:nth-child(3) { padding-left: 0; border-left: 0; }
-  .show, .venue { grid-template-columns: 1fr; }
+  .show, .venue, .thirty-grid { grid-template-columns: 1fr; }
   .waves { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet.ready .stamp-frame { opacity: 1; }
+  .sheet.go .stamp-frame { animation: none; }
 }
 @media (max-width: 600px) {
   .event-grid { grid-template-columns: 1fr; }
   .event-grid div + div { padding-left: 0; border-left: 0; }
+  /* Phones: the seal sits beside the intro instead of over the title, and the sheet is five stamps wide */
+  .page-head .wrap { display: flow-root; }
+  .seal { position: static; float: right; width: 96px; margin: 18px 0 8px 14px; }
+  .sheet { grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 8px; }
+  .sheet b { font-size: 15px; }
+  .sheet small { font-size: 8px; letter-spacing: 0; }
 }
 </style>
 </head>
@@ -61,7 +100,15 @@
     <div class="wrap">
       <div class="bar"><span>Aaj Ka Dhamaka 30.0</span><span>Official Legends partner competition</span><span>02.20.2027</span></div>
       <h1 class="cond">Event details</h1>
-      <p class="lede">Everything you need to know about the show. Showtime and tickets are posted here as soon as they're confirmed.</p>
+      <svg class="seal" viewBox="0 0 200 200" role="img" aria-label="30 years of Aaj Ka Dhamaka">
+        <defs><path id="ring" d="M100 100 m-76 0 a76 76 0 1 1 152 0 a76 76 0 1 1 -152 0"/></defs>
+        <g fill="none" stroke="currentColor"><circle cx="100" cy="100" r="97" stroke-width="3"/><circle cx="100" cy="100" r="90" stroke-width="1.2"/><circle cx="100" cy="100" r="61" stroke-width="1.2"/></g>
+        <text font-size="13"><textPath href="#ring" textLength="474" lengthAdjust="spacing">AAJ KA DHAMAKA ★ THIRTY YEARS ★ 1.0 TO 30.0 ★</textPath></text>
+        <text x="100" y="72" text-anchor="middle" font-size="12" letter-spacing="3">AKD</text>
+        <text class="num" x="100" y="124" text-anchor="middle" font-size="56">30</text>
+        <text x="100" y="146" text-anchor="middle" font-size="12" letter-spacing="3">YEARS</text>
+      </svg>
+      <p class="lede">AKD turns 30. Everything you need to know about the thirtieth show is here, and showtime and tickets are posted as soon as they're confirmed.</p>
     </div>
   </section>
 
@@ -97,6 +144,19 @@
     </div>
   </section>
 
+  <section class="band-ink thirty">
+    <div class="wrap thirty-grid">
+      <div>
+        <p class="kicker">1.0 to 30.0</p>
+        <h2 class="cond">30 years of AKD</h2>
+        <p>Thirty years of teams, crowds and the UNC community that keeps Aaj Ka Dhamaka going. On February 20, 2027, the thirtieth show takes the stage.</p>
+        <p>Danced at, worked on or cheered at an AKD before? Send your old photos and stories to @uncakd so we can celebrate them this season.</p>
+        <a class="btn btn-paper" href="https://www.instagram.com/uncakd/">Share a memory</a>
+      </div>
+      <div class="sheet" id="sheet" role="img" aria-label="A sheet of thirty stamps, one for each AKD from 1.0 to 30.0, with 30.0 marked for February 20, 2027"></div>
+    </div>
+  </section>
+
   <section class="band-plain">
     <div class="wrap venue">
       <p class="name cond">John H. Gattis–Wendell Tabb Theater</p>
@@ -126,6 +186,21 @@
       el("cd-d").textContent = d; el("cd-h").textContent = pad(h); el("cd-m").textContent = pad(m); el("cd-s").textContent = pad(s);
     }
     tick(); setInterval(tick, 1000);
+  })();
+
+  // One stamp per edition; 30.0 is this year's
+  (() => {
+    const sheet = document.getElementById("sheet");
+    sheet.innerHTML = Array.from({ length: 30 }, (_, i) => {
+      const n = i + 1, now = n === 30;
+      return `<span class="stamp-frame${now ? " now" : ""}" style="--i:${i}"><span class="inner"><b>${n}.0</b>${now ? "<small>02.20.27</small>" : ""}</span></span>`;
+    }).join("");
+    if (!("IntersectionObserver" in window)) return;
+    sheet.classList.add("ready");
+    const io = new IntersectionObserver((es) => {
+      if (es[0].isIntersecting) { sheet.classList.add("go"); io.disconnect(); }
+    }, { threshold: .3 });
+    io.observe(sheet);
   })();
 </script>
 </body>
