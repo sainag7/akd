@@ -42,26 +42,37 @@
 .seal text { font-family: var(--type); fill: currentColor; }
 .seal .num { font-family: var(--display); }
 
-/* 30 years: a sheet of thirty stamps, one per edition, with this year's in red */
-.thirty-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+/* 30 years: a commemorative boarding pass for flight 30.0; the stub's counter rolls up to 30 */
+.thirty-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: clamp(36px, 6vw, 90px); align-items: center; }
+.thirty-grid > * { min-width: 0; }
 .thirty h2 { margin-bottom: 22px; color: var(--paper-3); }
 .thirty p { margin: 0 0 18px; max-width: 46ch; font-size: 18px; }
-.thirty .kicker { margin-bottom: 10px; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: #D8B98C; }.thirty-grid > * { min-width: 0; }
-.sheet { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; padding: 14px; border: 1.5px dashed rgba(243, 232, 210, .35); }
-.sheet .stamp-frame { aspect-ratio: 5 / 6; padding: 6px; background-size: 10px 10px; background-position: -5px -5px;
-  background-image: radial-gradient(circle at 5px 5px, transparent 2.6px, #F6EFDF 3.1px); }
-.sheet .inner { display: grid; place-items: center; align-content: center; gap: 2px; color: var(--ink); border: 1px solid rgba(74, 35, 18, .25); }
-.sheet b { font-family: var(--display); font-weight: 400; font-size: clamp(13px, 1.5vw, 20px); line-height: 1; }
-.sheet small { font-size: clamp(8px, .8vw, 10px); letter-spacing: .1em; text-transform: uppercase; color: var(--sepia); }
-.sheet .now { transform: rotate(-6deg) scale(1.08); z-index: 1; }
-.sheet .now .inner { background: var(--air-red); border-color: var(--paper-3); color: var(--paper-3); }
-.sheet .now small { color: var(--paper-3); }
-/* Stamps press onto the sheet one by one when it scrolls into view */
-.sheet.ready .stamp-frame { opacity: 0; }
-.sheet.go .stamp-frame { animation: press .35s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i) * 45ms); }
-.sheet.go .now { animation-name: press-now; animation-duration: .5s; }
-@keyframes press { from { opacity: 0; transform: scale(1.5); } to { opacity: 1; transform: none; } }
-@keyframes press-now { from { opacity: 0; transform: rotate(-20deg) scale(2.2); } to { opacity: 1; transform: rotate(-6deg) scale(1.08); } }
+.thirty .kicker { margin-bottom: 10px; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: #D8B98C; }
+.pass { display: grid; grid-template-columns: 1fr auto; color: var(--ink); background: var(--paper-3); box-shadow: 0 18px 40px rgba(0, 0, 0, .35); transform: rotate(-1.5deg); }
+.pass .airmail-edge { grid-column: 1 / -1; }
+.pass-main { padding: clamp(18px, 2.4vw, 28px); }
+.pass-top { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 4px double var(--ink); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; }
+.pass-top b { font-family: var(--display); font-weight: 400; letter-spacing: .04em; }
+.pass small, .pass dt { display: block; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--sepia); }
+.route { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; margin: 18px 0; }
+.route b { font-family: var(--display); font-weight: 400; font-size: clamp(34px, 4vw, 54px); line-height: 1; }
+.route .to { text-align: right; }
+.route .to b { color: var(--air-red); }
+.route .path { position: relative; height: 2px; background: repeating-linear-gradient(90deg, var(--ink) 0 8px, transparent 8px 14px); }
+.route svg { position: absolute; left: 50%; top: 50%; width: clamp(56px, 6vw, 84px); padding: 0 6px; background: var(--paper-3); transform: translate(-50%, -50%); }
+.pass-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 18px; margin: 0; padding-top: 14px; border-top: 1.5px dashed rgba(74, 35, 18, .4); }
+.pass-fields dd { margin: 2px 0 0; font-family: var(--display); text-transform: uppercase; font-size: clamp(15px, 1.4vw, 19px); line-height: 1.15; }
+.pass-stub { position: relative; display: grid; justify-items: center; align-content: center; gap: 4px; padding: 20px clamp(18px, 2.4vw, 30px); border-left: 2px dashed rgba(74, 35, 18, .45); text-align: center; }
+/* Punched notch where the stub tears off */
+.pass-stub::before, .pass-stub::after { content: ""; position: absolute; left: -13px; top: -12px; width: 24px; height: 24px; border-radius: 50%; background: var(--ink); }
+.pass-stub::after { display: none; }
+.odo { display: flex; font-family: var(--display); font-size: clamp(76px, 8vw, 116px); line-height: 1; color: var(--air-red); }
+.odo .win { display: block; height: 1em; overflow: hidden; }
+.odo .reel { display: block; transform: translateY(calc(var(--to) * -1em)); }
+.odo .reel span { display: block; height: 1em; }
+.odo.ready .reel { transform: translateY(0); }
+.odo.go .reel { transform: translateY(calc(var(--to) * -1em)); transition: transform 2.6s cubic-bezier(.2, .7, .1, 1); }
+.barcode { width: 100%; min-width: 110px; height: 34px; margin-top: 8px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 13px); }
 
 .venue { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(30px, 6vw, 90px); align-items: end; }
 .venue .name { margin: 0; font-size: clamp(42px, 5.6vw, 84px); }
@@ -74,18 +85,19 @@
   .waves { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sheet.ready .stamp-frame { opacity: 1; }
-  .sheet.go .stamp-frame { animation: none; }
+  .odo.go .reel { transition: none; }
 }
 @media (max-width: 600px) {
   .event-grid { grid-template-columns: 1fr; }
   .event-grid div + div { padding-left: 0; border-left: 0; }
-  /* Phones: the seal sits beside the intro instead of over the title, and the sheet is five stamps wide */
+  /* Phones: the seal sits beside the intro instead of over the title, and the stub tears off below the pass */
   .page-head .wrap { display: flow-root; }
   .seal { position: static; float: right; width: 96px; margin: 18px 0 8px 14px; }
-  .sheet { grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 8px; }
-  .sheet b { font-size: 15px; }
-  .sheet small { font-size: 8px; letter-spacing: 0; }
+  .pass { grid-template-columns: 1fr; transform: rotate(-1deg); }
+  .pass-stub { border-left: 0; border-top: 2px dashed rgba(74, 35, 18, .45); }
+  .pass-stub::before { left: -12px; top: -13px; }
+  .pass-stub::after { display: block; left: auto; right: -12px; top: -13px; }
+  .pass-fields dd { font-size: 15px; }
 }
 </style>
 </head>
@@ -145,10 +157,36 @@
   <section class="band-ink thirty">
     <div class="wrap thirty-grid">
       <div>
-        <p class="kicker">1.0 to 30.0</p>
+        <p class="kicker">Thirtieth anniversary</p>
         <h2 class="cond">30 years of AKD</h2>
-        <p>Thirty years of teams, crowds and the UNC community that keeps Aaj Ka Dhamaka going. On February 20, 2027, the thirtieth show takes the stage.</p>      </div>
-      <div class="sheet" id="sheet" role="img" aria-label="A sheet of thirty stamps, one for each AKD from 1.0 to 30.0, with 30.0 marked for February 20, 2027"></div>
+        <p>Thirty years of teams, crowds and the UNC community that keeps Aaj Ka Dhamaka going. On February 20, 2027, flight 30.0 takes off.</p>
+      </div>
+      <div class="pass">
+        <div class="pass-main">
+          <div class="pass-top"><b>Aaj Ka Dhamaka</b><span>Boarding pass</span></div>
+          <div class="route">
+            <div><small>From</small><b>1.0</b></div>
+            <div class="path"><svg viewBox="-40 -16 80 32" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M-20 -8 Q0 -12 20 -8 M-20 8 Q0 4 20 8"/><path d="M-12 -9 V7 M11 -10 V6"/><path d="M22 -2 h11 M22 4 h11 M-22 -5 h-10 v11 h10"/></g></svg></div>
+            <div class="to"><small>To</small><b>30.0</b></div>
+          </div>
+          <dl class="pass-fields">
+            <div><dt>Flight</dt><dd>AKD 30.0</dd></div>
+            <div><dt>Date</dt><dd>Sat 02.20.27</dd></div>
+            <div><dt>Gate</dt><dd>Gattis–Tabb</dd></div>
+            <div><dt>Class</dt><dd>Fusion &amp; Bhangra</dd></div>
+          </dl>
+        </div>
+        <div class="pass-stub">
+          <small>Edition</small>
+          <span class="odo" id="odo" role="img" aria-label="30">
+            <span class="win" aria-hidden="true"><span class="reel" style="--to:3"><span>0</span><span>1</span><span>2</span><span>3</span></span></span>
+            <span class="win" aria-hidden="true"><span class="reel" style="--to:30"></span></span>
+          </span>
+          <small>Years</small>
+          <span class="barcode" aria-hidden="true"></span>
+        </div>
+        <div class="airmail-edge" aria-hidden="true"></div>
+      </div>
     </div>
   </section>
 
@@ -183,19 +221,17 @@
     tick(); setInterval(tick, 1000);
   })();
 
-  // One stamp per edition; 30.0 is this year's
+  // The edition counter rolls from 00 up to 30 when the pass scrolls into view.
+  // The ones reel spins through 0–9 three times and lands on 0.
   (() => {
-    const sheet = document.getElementById("sheet");
-    sheet.innerHTML = Array.from({ length: 30 }, (_, i) => {
-      const n = i + 1, now = n === 30;
-      return `<span class="stamp-frame${now ? " now" : ""}" style="--i:${i}"><span class="inner"><b>${n}.0</b>${now ? "<small>02.20.27</small>" : ""}</span></span>`;
-    }).join("");
-    if (!("IntersectionObserver" in window)) return;
-    sheet.classList.add("ready");
+    const odo = document.getElementById("odo");
+    odo.querySelector('[style="--to:30"]').innerHTML = Array.from({ length: 31 }, (_, i) => `<span>${i % 10}</span>`).join("");
+    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    odo.classList.add("ready");
     const io = new IntersectionObserver((es) => {
-      if (es[0].isIntersecting) { sheet.classList.add("go"); io.disconnect(); }
-    }, { threshold: .3 });
-    io.observe(sheet);
+      if (es[0].isIntersecting) { odo.classList.add("go"); io.disconnect(); }
+    }, { threshold: .4 });
+    io.observe(odo);
   })();
 </script>
 </body>
