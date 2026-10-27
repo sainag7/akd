@@ -29,7 +29,8 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 :focus-visible { outline: 2px dashed var(--air-red); outline-offset: 4px; }
-.wrap { width: min(1280px, 100% - 32px); margin-inline: auto; }
+/* Content fills the screen at every size; the side margin grows from 16px on phones to 72px on big monitors */
+.wrap { width: min(2000px, 100% - 2 * clamp(16px, 4vw, 72px)); margin-inline: auto; }
 
 /* Rye wood type with a light sepia offset shadow */
 .cond { font-family: var(--display); font-weight: 400; text-transform: uppercase; line-height: .95; letter-spacing: .01em; text-shadow: .045em .045em 0 rgba(181, 137, 91, .75); }
